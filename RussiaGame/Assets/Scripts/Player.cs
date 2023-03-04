@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float inicialSpeed;
     public float speed;
     public float jumpForce;
     public int jumpTimes;
     public bool isCrouching;
+    public bool berlinWall;
+    public bool russianWinter;
+
 
     public Sprite sprite1;
     public Sprite sprite2;
@@ -18,6 +22,7 @@ public class Player : MonoBehaviour
 
     private void Start() 
     {
+        inicialSpeed = speed;
         rig = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>(); 
@@ -59,6 +64,19 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground"))
         {
             jumpTimes = 1;
+        }
+
+        if(collision.gameObject.CompareTag("BerlinWall"))
+        {
+            berlinWall = true;
         }    
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider) 
+    {
+        if(collider.gameObject.CompareTag("RussianWinter"))
+        {
+            russianWinter = true;
+        }   
     }
 }
