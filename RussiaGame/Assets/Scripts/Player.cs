@@ -17,14 +17,14 @@ public class Player : MonoBehaviour
     public Sprite sprite2;
 
     private Rigidbody2D rig;
-    private BoxCollider2D boxCollider;
+    private CapsuleCollider2D capsuleCollider;
     private SpriteRenderer spriteRenderer;
 
     private void Start() 
     {
         inicialSpeed = speed;
         rig = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
@@ -47,14 +47,14 @@ public class Player : MonoBehaviour
         isCrouching = !isCrouching;
         if(isCrouching)
         {
-            boxCollider.offset = new Vector2(0, -0.25f);
-            boxCollider.size = new Vector2(1, 0.5f);
+            capsuleCollider.offset = new Vector2(0, -0.25f);
+            capsuleCollider.size = new Vector2(1, 0.5f);
             spriteRenderer.sprite = sprite2;
         }
         if(!isCrouching)
         {
-            boxCollider.offset = new Vector2(0, 0);
-            boxCollider.size = new Vector2(1, 1);
+            capsuleCollider.offset = new Vector2(0, 0);
+            capsuleCollider.size = new Vector2(1, 1);
             spriteRenderer.sprite = sprite1;
         }
     }
