@@ -18,9 +18,17 @@ public class SlideMove : MonoBehaviour
         {
             Touch t = Input.GetTouch(0);
 
+            Vector3 pos = Camera.main.ScreenToWorldPoint(t.position);
+            transform.position = pos;
+        }
+
+        if(Input.touchCount > 0 )
+        {
+            Touch t = Input.GetTouch(0);
+
             if(t.phase == TouchPhase.Moved)
             {
-                transform.position += (Vector3)t.deltaPosition/slowMove; 
+                transform.position += (Vector3)t.deltaPosition; 
             }
         }
     }
