@@ -14,13 +14,14 @@ public class MoveSummary : MonoBehaviour
 
             if(t.phase == TouchPhase.Moved)
             {
-                if(t.deltaPosition.y > 25 && transform.position.y >= finalPos)
-                {
-                    LeanTween.moveY(this.gameObject.GetComponent<RectTransform>(), initialPos, 0.5f);
-                }
-                else if(t.deltaPosition.y < 25 && transform.position.y <= initialPos)
+                if(t.deltaPosition.y > 25)
                 {
                     LeanTween.moveY(this.gameObject.GetComponent<RectTransform>(), finalPos, 0.5f);
+                }
+                
+                if(t.deltaPosition.y < -25)
+                {
+                    LeanTween.moveY(this.gameObject.GetComponent<RectTransform>(), initialPos, 0.5f);
                 }
             }
         }
