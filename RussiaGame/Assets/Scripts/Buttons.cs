@@ -4,40 +4,12 @@ using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
-    [SerializeField] GameObject generalPanelI;
-    [SerializeField] List<GameObject> secondaryPanelsII = new List<GameObject>();
-    [SerializeField] List<GameObject> tertiaryPanelsIII = new List<GameObject>();
-    [SerializeField] int panelNumber;
-    
-    public void OpenBandeiras()
-    {
-        panelNumber = 2;
-        generalPanelI.SetActive(false);
-        secondaryPanelsII[2].SetActive(true);
-        tertiaryPanelsIII[2].SetActive(false);
-    }
-    
-    public void OpenRussiaBandeira()
-    {
-        panelNumber = 3;
-        tertiaryPanelsIII[2].SetActive(true);
-    }
+    public GameObject generalPanelI;
+    public List<GameObject> secondaryPanelsII = new List<GameObject>();
+    public List<GameObject> tertiaryPanelsIII = new List<GameObject>();
+    public int panelNumber;
 
-    public void OpenCulinaria()
-    {
-        panelNumber = 2;
-        generalPanelI.SetActive(false);
-        secondaryPanelsII[4].SetActive(true);
-        tertiaryPanelsIII[4].SetActive(false);
-    }
-
-    public void OpenBebidaCulinaria()
-    {
-        panelNumber = 3;
-        tertiaryPanelsIII[4].SetActive(true);
-    }
-
-    private void Update() 
+    /*private void Update() 
     {
         if(panelNumber == 2 && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -63,7 +35,7 @@ public class Buttons : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     public void Return()
     {
