@@ -9,7 +9,7 @@ public class Buttons : MonoBehaviour
     public List<GameObject> tertiaryPanelsIII = new List<GameObject>();
     public int panelNumber;
 
-    /*private void Update() 
+    private void Update() 
     {
         if(panelNumber == 2 && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -35,7 +35,7 @@ public class Buttons : MonoBehaviour
                 }
             }
         }
-    }*/
+    }
 
     public void Return()
     {
@@ -45,7 +45,8 @@ public class Buttons : MonoBehaviour
             {
                 if(secondaryPanelsII[i])
                 {
-                    secondaryPanelsII[i].SetActive(false);
+                    GetComponent<AudioSource>().Play();
+                    LeanTween.moveX(secondaryPanelsII[i].GetComponent<RectTransform>(), 1400, 1f).setEaseInOutBack().setOnComplete(OffPanelsII);
                     generalPanelI.SetActive(true);
                     panelNumber = 1;
                 }
@@ -58,10 +59,26 @@ public class Buttons : MonoBehaviour
             {
                 if(tertiaryPanelsIII[i])
                 {
-                    tertiaryPanelsIII[i].SetActive(false);
+                    GetComponent<AudioSource>().Play();
+                    LeanTween.moveX(tertiaryPanelsIII[i].GetComponent<RectTransform>(), 1400, 1f).setEaseInOutBack().setOnComplete(OffPanelsIII);
                     panelNumber = 2;
                 }
             }
+        }
+    }
+
+    private void OffPanelsIII()
+    {
+        for (int i = 0; i < tertiaryPanelsIII.Count; i++)
+        {
+            tertiaryPanelsIII[i].SetActive(false);
+        }
+    }
+    private void OffPanelsII()
+    {
+        for (int i = 0; i < secondaryPanelsII.Count; i++)
+        {
+            secondaryPanelsII[i].SetActive(false);
         }
     }
 }
